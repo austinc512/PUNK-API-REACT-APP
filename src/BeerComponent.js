@@ -57,7 +57,7 @@ export default class Beers extends Component {
                 <button onClick={() => this.handleIncrement(beer.id)}>
                   like
                 </button>
-                {this.state.likes[beer.id]} {/* Display the likes count */}
+                {this.state.likes[beer.id]}
               </li>
             );
           })}
