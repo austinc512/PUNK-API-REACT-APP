@@ -11,8 +11,20 @@ li {
   /* display: flex; */
 }
 
+ul {
+  padding-inline-start: 0;
+}
+
 button {
   /* position: absolute;
   right: 50px; */
-  display: flex;
+  display: block;
+}
+
+img {
+  height: 200px;
+  width: auto;
+  /* float: right; */
+  display: block;
+  margin: 10px auto;
 }

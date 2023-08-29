@@ -52,6 +52,7 @@ export default class Beers extends Component {
             return (
               <li key={beer.id}>
                 {beer.name}: {beer.description}
+                <img src={beer.image_url} alt={beer.name} />
                 <br />
                 {beer.id}
                 <button onClick={() => this.handleIncrement(beer.id)}>
