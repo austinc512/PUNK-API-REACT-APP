@@ -13,6 +13,8 @@ li {
 
 ul {
   padding-inline-start: 0;
+  width: 50%;
+  margin: 0 auto;
 }
 
 button {
@@ -27,4 +29,20 @@ img {
   /* float: right; */
   display: block;
   margin: 10px;
+}
+
+button {
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 5px 10px;
+}
+
+.liked {
+  /* opacity: 0.6; */
+  /* cursor: not-allowed; */
+  background-color: green;
+}
+
+h2 {
+  margin: 0;
 }

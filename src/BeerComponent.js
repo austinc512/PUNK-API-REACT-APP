@@ -11,6 +11,7 @@ export default class Beers extends Component {
     this.state = {
       beers: [],
       likes: {},
+      disabled: false,
     };
   }
   componentDidMount() {
@@ -33,14 +34,28 @@ export default class Beers extends Component {
 
   handleIncrement = (id) => {
     console.log(id);
-    this.setState((prevState) => {
-      return {
-        likes: {
-          ...prevState.likes,
-          [id]: prevState.likes[id] + 1,
-        },
-      };
-    });
+    if (this.state.likes[id] > 0) {
+      this.setState((prevState) => {
+        return {
+          likes: {
+            ...prevState.likes,
+            [id]: prevState.likes[id] - 1,
+          },
+        };
+      });
+
+      return;
+    } else if (this.state.likes[id] === 0) {
+      this.setState((prevState) => {
+        return {
+          likes: {
+            ...prevState.likes,
+            [id]: prevState.likes[id] + 1,
+          },
+          disabled: true,
+        };
+      });
+    }
   };
   render() {
     console.log("render");
@@ -51,14 +66,20 @@ export default class Beers extends Component {
           {this.state.beers.map((beer) => {
             return (
               <li key={beer.id}>
-                {beer.name}: {beer.description}
+                <h2>{beer.name}</h2>
+                {beer.description}
                 <img src={beer.image_url} alt={beer.name} />
                 <br />
-                {beer.id}
-                <button onClick={() => this.handleIncrement(beer.id)}>
+                {/* {beer.id} */}
+                <button
+                  onClick={() => this.handleIncrement(beer.id)}
+                  className={
+                    this.state.likes[beer.id] > 0 ? `liked` : `unliked`
+                  }
+                >
                   like
                 </button>
-                {this.state.likes[beer.id]}
+                Like Counter: {this.state.likes[beer.id]}
               </li>
             );
           })}
